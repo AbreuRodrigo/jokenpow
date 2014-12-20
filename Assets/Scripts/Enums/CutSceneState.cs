@@ -1,0 +1,5 @@
+﻿public enum CutSceneState {
+	STARTS_FADING_IN,
+	STARTS_FADING_OUT,
+	STARTS_DOING_NOTHING
+}

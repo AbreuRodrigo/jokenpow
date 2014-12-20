@@ -1,0 +1,6 @@
+﻿public enum GameState {
+	CARD_SELECTION,
+	MATCHING_PLAYERS,
+	VALIDATING,
+	GAMEOVER
+}

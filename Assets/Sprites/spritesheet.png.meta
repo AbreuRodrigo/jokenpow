@@ -1,0 +1,304 @@
+fileFormatVersion: 2
+guid: ba105890ad6f20042a0319f0e344f5ce
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: spritesheet_0
+    21300002: spritesheet_1
+    21300004: spritesheet_2
+    21300006: spritesheet_3
+    21300008: spritesheet_4
+    21300010: spritesheet_5
+    21300012: spritesheet_6
+    21300014: spritesheet_9
+    21300016: spritesheet_10
+    21300018: spritesheet_11
+    21300020: spritesheet_12
+    21300022: spritesheet_27
+    21300024: spritesheet_28
+    21300026: spritesheet_32
+    21300028: spritesheet_39
+    21300030: spritesheet_40
+    21300032: spritesheet_41
+    21300034: spritesheet_42
+    21300036: spritesheet_36
+    21300038: spritesheet_20
+    21300040: spritesheet_20
+    21300042: spritesheet_21
+    21300044: spritesheet_22
+    21300046: spritesheet_23
+    21300048: spritesheet_24
+    21300050: spritesheet_7
+    21300052: spritesheet_8
+    21300054: spritesheet_16
+    21300056: spritesheet_17
+    21300058: spritesheet_29
+    21300060: spritesheet_30
+    21300062: spritesheet_31
+    21300064: spritesheet_21
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -3
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1559
+        width: 388
+        height: 474
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 1559
+        width: 388
+        height: 474
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1559
+        width: 388
+        height: 474
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 1559
+        width: 388
+        height: 474
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1551
+        width: 401
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1251
+        width: 1093
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 1227
+        width: 910
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 896
+        width: 949
+        height: 317
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 1005
+        width: 99
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 1005
+        width: 100
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 1005
+        width: 99
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 886
+        width: 340
+        height: 284
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 717
+        width: 99
+        height: 121
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 551
+        width: 117
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 7
+        width: 755
+        height: 435
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 385
+        width: 113
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 1892
+        y: 228
+        width: 116
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 35
+        width: 422
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 36
+        width: 416
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 0
+        width: 200
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 224
+        width: 788
+        height: 303
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 698
+        width: 130
+        height: 156
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
