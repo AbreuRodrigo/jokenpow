@@ -4,6 +4,6 @@ using System.Collections;
 public class GameMenuController : MonoBehaviour {
 
 	public static void LoadGamePlay(){
-		Application.LoadLevel("GamePlay");
+		Application.LoadLevel("GamePlaySingle");
 	}
 }

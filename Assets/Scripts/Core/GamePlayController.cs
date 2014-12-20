@@ -20,6 +20,8 @@ public class GamePlayController : MonoBehaviour {
 
 	private CardBehaviour selected;
 
+	private const string GAMEPLAY_SINGLE_SCENE = "GamePlaySingle";
+
 	void Awake(){
 		state = GameState.CARD_SELECTION;
 
@@ -100,7 +102,7 @@ public class GamePlayController : MonoBehaviour {
 			break;
 		}
 
-		//Descer de cima o card do computador
+		//Descer o card do computador (up/down)
 		computer.ComputerPlayCard();
 
 		StartCoroutine("WaitGameValidation");
@@ -115,7 +117,7 @@ public class GamePlayController : MonoBehaviour {
 
 		ValidateVictoryCard();
 
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(0.5f);
 
 		state = GameState.GAMEOVER;
 	}
@@ -169,12 +171,12 @@ public class GamePlayController : MonoBehaviour {
 				Touch touch = Input.touches[0];
 				
 				if(touch.phase == TouchPhase.Began){
-					Application.LoadLevel("GamePlay");
+					Application.LoadLevel(GAMEPLAY_SINGLE_SCENE);
 				}
 			}
 		}else{
 			if(Input.GetMouseButton(0)){
-				Application.LoadLevel("GamePlay");
+				Application.LoadLevel(GAMEPLAY_SINGLE_SCENE);
 			}
 		}
 	}
