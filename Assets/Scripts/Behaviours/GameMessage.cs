@@ -12,20 +12,26 @@ public class GameMessage : MonoBehaviour {
 
 	public void RunDrawMessage(){
 		gameObject.GetComponent<SpriteRenderer>().sprite = draw;
-		MessageFallAnimation();
+		ShowMessage();
 	}
 
 	public void RunWinMessage(){
 		gameObject.GetComponent<SpriteRenderer>().sprite = win;
-		MessageFallAnimation();
+		ShowMessage();
 	}
 
 	public void RunLoseMessage(){
 		gameObject.GetComponent<SpriteRenderer>().sprite = lose;
-		MessageFallAnimation();
+		ShowMessage();
 	}
 
-	private void MessageFallAnimation(){
-		gameObject.GetComponent<Animator>().SetBool ("MessageFall", true);
+	private void ShowMessage(){
+		gameObject.GetComponent<Animator>().SetBool ("MessageHide", false);
+		gameObject.GetComponent<Animator>().SetBool ("MessageShow", true);
+	}
+
+	public void HideMessage(){
+		gameObject.GetComponent<Animator>().SetBool ("MessageShow", false);
+		gameObject.GetComponent<Animator>().SetBool ("MessageHide", true);
 	}
 }

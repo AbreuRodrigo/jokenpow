@@ -26,5 +26,15 @@ public class SpriteButtonEvents {
 
 			GameObject.FindObjectOfType<CutScene>().FadeOut(GameMenuController.LoadGamePlay);
 		}
+		if("OkButton".Equals(button.name)){
+			GameObject.FindObjectOfType<GamePlayController>().SendMessage("PlayGame");
+			button.Disable();
+		}
+		if("MenuButton".Equals(button.name)){
+			Application.LoadLevel("Menu");
+		}
+		if("ReturnButton".Equals(button.name)){
+			GameObject.FindObjectOfType<GamePlayController>().SendMessage("StartNextGameRound");
+		}
 	}
 }

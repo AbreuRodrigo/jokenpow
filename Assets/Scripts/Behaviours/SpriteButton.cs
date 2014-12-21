@@ -43,4 +43,16 @@ public class SpriteButton : MonoBehaviour {
 		anm.SetBool("hasReleased", false);
 		anm.SetBool("hasPressed", false);
 	}
+
+	public void Enable(){
+		this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		this.gameObject.GetComponent<Animator>().enabled = true;
+		this.gameObject.collider2D.enabled = true;
+	}
+
+	public void Disable(){
+		this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+		this.gameObject.GetComponent<Animator>().enabled = false;
+		this.gameObject.collider2D.enabled = false;
+	}
 }

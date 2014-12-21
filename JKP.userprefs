@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Behaviours\ScoreTextCorrection.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Core\GamePlayController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Core\GamePlayController.cs" Line="36" Column="38" />
-      <File FileName="Assets\Scripts\Behaviours\ScoreTextCorrection.cs" Line="26" Column="83" />
+      <File FileName="Assets\Scripts\Core\GamePlayController.cs" Line="199" Column="30" />
+      <File FileName="Assets\Scripts\Behaviours\CardBehaviour.cs" Line="40" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

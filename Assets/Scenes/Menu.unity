@@ -169,7 +169,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 32700
-  m_Sprite: {fileID: 21300060, guid: ba105890ad6f20042a0319f0e344f5ce, type: 3}
+  m_Sprite: {fileID: 21300070, guid: ba105890ad6f20042a0319f0e344f5ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &249024485
 BoxCollider2D:
@@ -542,7 +542,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 32700
-  m_Sprite: {fileID: 21300042, guid: ba105890ad6f20042a0319f0e344f5ce, type: 3}
+  m_Sprite: {fileID: 21300062, guid: ba105890ad6f20042a0319f0e344f5ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!58 &999168137
 CircleCollider2D:
@@ -690,7 +690,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300056, guid: ba105890ad6f20042a0319f0e344f5ce, type: 3}
+  m_Sprite: {fileID: 21300038, guid: ba105890ad6f20042a0319f0e344f5ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1371193459
 Transform:
@@ -799,7 +799,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300030, guid: ba105890ad6f20042a0319f0e344f5ce, type: 3}
+  m_Sprite: {fileID: 21300026, guid: ba105890ad6f20042a0319f0e344f5ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1888996496
 Transform:
