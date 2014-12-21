@@ -147,25 +147,23 @@ public class GamePlayController : MonoBehaviour {
 		CardType playerCard = selected.type;
 		CardType computerCard = computer.type;
 
+		computer.FadeOut();
+		selected.GetComponent<SpriteRenderer>().enabled = false;
+
 		if(playerCard.Equals(computerCard)){
-			selected.GetComponent<SpriteRenderer>().enabled = false;
-			computer.GetComponent<SpriteRenderer>().enabled = false;
+			texts.DefineResult(GameResult.DRAW);
 
 			message.RunDrawMessage();
 		}else if((playerCard.Equals(CardType.ROCK) && computerCard.Equals(CardType.SCISSOR)) ||
 		   (playerCard.Equals(CardType.PAPER) && computerCard.Equals(CardType.ROCK)) ||
 		   (playerCard.Equals(CardType.SCISSOR) && computerCard.Equals(CardType.PAPER))){
 
-			selected.GetComponent<SpriteRenderer>().enabled = false;
-			computer.GetComponent<SpriteRenderer>().enabled = false;
-
+			texts.DefineResult(GameResult.PLAYER1_VICTORY);
 			texts.PlayerVictory();
 
 			message.RunWinMessage();
 		}else{
-			selected.GetComponent<SpriteRenderer>().enabled = false;
-			computer.GetComponent<SpriteRenderer>().enabled = false;
-
+			texts.DefineResult(GameResult.PLAYER2_VICTORY);
 			texts.ComputerVictory();
 
 			message.RunLoseMessage();

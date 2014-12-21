@@ -39,10 +39,10 @@ public class CardBehaviour : MonoBehaviour {
 	public void ResetAnimations(Sprite sprite){
 		isSelected = false;
 
-		gameObject.GetComponent<Animator>().SetBool("FadeOut", false);
+		gameObject.GetComponent<Animator>().SetBool("ComputerPlayCard", false);
 		gameObject.GetComponent<Animator>().SetBool("ScissorMoveLeft", false);
 		gameObject.GetComponent<Animator>().SetBool("PaperMoveLeft", false);
-		gameObject.GetComponent<Animator>().SetBool("ComputerPlayCard", false);
+		gameObject.GetComponent<Animator>().SetBool("FadeOut", false);
 
 		gameObject.gameObject.GetComponent<Animator>().Play("Idle");
 

@@ -19,6 +19,8 @@ public class TextsController : MonoBehaviour {
 	private TextMesh roundCText;
 	private TextMesh roundCShadow;
 
+	private GameResult result;
+
 	void Awake(){
 		events = null;
 
@@ -78,40 +80,31 @@ public class TextsController : MonoBehaviour {
 		roundCText.text = roundCShadow.text = round + "-3";
 	}
 
+	public void DefineResult(GameResult res){
+		result = res;
+	}
+
 	IEnumerator CalculatePointsRoutine(){
 		int nextPlayerScore = myScore;
 		int nextComputerScore = pcScore;
 
-		switch(round){
-			case 1:
-				if(playerVictories == 1){
+		switch(result) {
+			case GameResult.PLAYER1_VICTORY:
+				if(round <= 2 && playerVictories == 1){
 					nextPlayerScore += 10;
-				}else if(computerVictories == 1){
-					nextComputerScore += 10;
-				}
-			break;
-			case 2:
-				if(playerVictories == 2){
+				}else if(round == 2 && playerVictories == 2){
 					nextPlayerScore += 20;
-				}else if(computerVictories == 2){
-					nextComputerScore += 20;
-				}else{
-					if(myScore == 0){
-						nextPlayerScore += 10;
-					}else if(pcScore == 0){
-						nextComputerScore += 10;
-					}
+				}else if(round == 3 && playerVictories <= 2){
+					nextPlayerScore += 15;
 				}
 			break;
-			case 3:
-				if(playerVictories == 3){
-					nextPlayerScore += 15;
-				}else if(playerVictories == 2){
-					nextPlayerScore += 10;
-				}else if(computerVictories == 3){
-					nextComputerScore += 15;
-				}else if(computerVictories == 2){
+			case GameResult.PLAYER2_VICTORY:
+				if(round <= 2 && computerVictories == 1){
 					nextComputerScore += 10;
+				}else if(round == 2 && computerVictories == 2){
+					nextComputerScore += 20;
+				}else if(round == 3 && computerVictories <= 2){
+					nextComputerScore += 15;
 				}
 			break;
 		}
