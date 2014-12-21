@@ -9,6 +9,9 @@ public class GamePlayController : MonoBehaviour {
 
 	private OkButton button;
 	private GameObject cardSelection;
+	private CutScene cutScene;
+	private TextsBehaviour texts;
+
 	private GameState state;
 
 	private CardBehaviour rock;
@@ -23,11 +26,15 @@ public class GamePlayController : MonoBehaviour {
 	private const string GAMEPLAY_SINGLE_SCENE = "GamePlaySingle";
 
 	void Awake(){
-		state = GameState.CARD_SELECTION;
+		cutScene = GameObject.FindObjectOfType<CutScene>();
+		texts = GameObject.FindObjectOfType<TextsBehaviour>();
 
-		Screen.fullScreen = true;
-		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+		state = GameState.LOADING_GAMEPLAY;
+	}
 
+	void Start(){
+		cutScene.FadeIn(AfterCutSceneEvents);
+		
 		LoadObjects();
 	}
 
@@ -42,7 +49,7 @@ public class GamePlayController : MonoBehaviour {
 	}
 
 	void ChangeSelectedCard(CardType type){
-		if(state.Equals(GameState.CARD_SELECTION)){
+		if(state == GameState.CARD_SELECTION){
 			switch (type) {
 				case CardType.ROCK:
 					scissor.isSelected = false;
@@ -122,7 +129,7 @@ public class GamePlayController : MonoBehaviour {
 		state = GameState.GAMEOVER;
 	}
 
-	private void ValidateVictoryCard(){
+	void ValidateVictoryCard(){
 		CardType playerCard = selected.type;
 		CardType computerCard = computer.type;
 
@@ -149,7 +156,7 @@ public class GamePlayController : MonoBehaviour {
 		}
 	}
 
-	private void LoadObjects(){			
+	void LoadObjects(){			
 		button = GameObject.FindObjectOfType<OkButton>();
 		
 		cardSelection = GameObject.Find("CardSelection");
@@ -165,7 +172,7 @@ public class GamePlayController : MonoBehaviour {
 		button.Disable();
 	}
 
-	private void DoGameOverInputLogics(){
+	void DoGameOverInputLogics(){
 		if(Application.platform == RuntimePlatform.Android){
 			if(Input.touches.Length > 0){
 				Touch touch = Input.touches[0];
@@ -179,5 +186,13 @@ public class GamePlayController : MonoBehaviour {
 				Application.LoadLevel(GAMEPLAY_SINGLE_SCENE);
 			}
 		}
+	}
+
+	void AfterCutSceneEvents(){
+		texts.Fall(ChangeToCardSelectionState);
+	}
+
+	void ChangeToCardSelectionState(){
+		state = GameState.CARD_SELECTION;
 	}
 }

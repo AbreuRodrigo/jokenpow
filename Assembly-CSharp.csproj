@@ -50,7 +50,9 @@
      <Compile Include="Assets\Scripts\Behaviours\CutScene.cs" />
      <Compile Include="Assets\Scripts\Behaviours\GameMessage.cs" />
      <Compile Include="Assets\Scripts\Behaviours\OkButton.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\ScoreTextCorrection.cs" />
      <Compile Include="Assets\Scripts\Behaviours\SpriteButton.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\TextsBehaviour.cs" />
      <Compile Include="Assets\Scripts\Core\GameCompanyController.cs" />
      <Compile Include="Assets\Scripts\Core\GameMenuController.cs" />
      <Compile Include="Assets\Scripts\Core\GamePlayController.cs" />

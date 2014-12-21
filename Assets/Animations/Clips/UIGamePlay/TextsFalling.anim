@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MessageFall
+  m_Name: TextsFalling
   serializedVersion: 4
   m_AnimationType: 2
   m_Compressed: 0
@@ -18,31 +18,31 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: {x: 0, y: 15, z: 0}
-        inSlope: {x: 0, y: -38.125, z: 0}
-        outSlope: {x: 0, y: -38.125, z: 0}
+        inSlope: {x: 0, y: -22.875, z: 0}
+        outSlope: {x: 0, y: -22.875, z: 0}
         tangentMode: 0
-      - time: .400000006
+      - time: .666666687
         value: {x: 0, y: -.25, z: 0}
-        inSlope: {x: 0, y: -16.5625, z: 0}
-        outSlope: {x: 0, y: -16.5625, z: 0}
-        tangentMode: 0
-      - time: .5
+        inSlope: {x: 0, y: -9.9375, z: 0}
+        outSlope: {x: 0, y: -9.9375, z: 0}
+        tangentMode: 4
+      - time: .833333313
         value: {x: 0, y: .25, z: 0}
-        inSlope: {x: 0, y: 1.25000048, z: 0}
-        outSlope: {x: 0, y: 1.25000048, z: 0}
-        tangentMode: 0
-      - time: .600000024
+        inSlope: {x: 0, y: .750000417, z: 0}
+        outSlope: {x: 0, y: .750000417, z: 0}
+        tangentMode: -1054932992
+      - time: 1
         value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: -2.49999952, z: 0}
-        outSlope: {x: 0, y: -2.49999952, z: 0}
-        tangentMode: 1093664768
+        inSlope: {x: 0, y: -1.49999988, z: 0}
+        outSlope: {x: 0, y: -1.49999988, z: 0}
+        tangentMode: 1867276141
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
-  m_SampleRate: 100
+  m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -59,7 +59,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .600000024
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -82,17 +82,17 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: .400000006
+      - time: .666666687
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: .5
+      - time: .833333313
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: .600000024
+      - time: 1
         value: 0
         inSlope: 0
         outSlope: 0
@@ -108,23 +108,23 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 15
-        inSlope: -38.125
-        outSlope: -38.125
+        inSlope: -22.875
+        outSlope: -22.875
         tangentMode: 10
-      - time: .400000006
+      - time: .666666687
         value: -.25
-        inSlope: -16.5625
-        outSlope: -16.5625
+        inSlope: -9.9375
+        outSlope: -9.9375
         tangentMode: 10
-      - time: .5
+      - time: .833333313
         value: .25
-        inSlope: 1.25000048
-        outSlope: 1.25000048
+        inSlope: .750000417
+        outSlope: .750000417
         tangentMode: 10
-      - time: .600000024
+      - time: 1
         value: 0
-        inSlope: -2.49999952
-        outSlope: -2.49999952
+        inSlope: -1.49999988
+        outSlope: -1.49999988
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -140,17 +140,17 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: .400000006
+      - time: .666666687
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: .5
+      - time: .833333313
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: .600000024
+      - time: 1
         value: 0
         inSlope: 0
         outSlope: 0
@@ -162,4 +162,11 @@ AnimationClip:
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []
-  m_Events: []
+  m_Events:
+  - time: 1
+    functionName: FinishEvents
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
