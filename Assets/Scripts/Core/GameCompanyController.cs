@@ -18,7 +18,7 @@ public class GameCompanyController : MonoBehaviour {
 	}
 
 	IEnumerator WaitLoadMenu(){
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(3);
 
 		cutScene.FadeOut(LoadMenuScene);
 	}
