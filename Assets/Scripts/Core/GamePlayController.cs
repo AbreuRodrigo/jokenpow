@@ -24,7 +24,7 @@ public class GamePlayController : MonoBehaviour {
 
 	private GameMessage message;
 
-	private CardBehaviour selected;
+	private CardType selected;
 
 	private const string GAMEPLAY_SINGLE_SCENE = "GamePlaySingle";
 	private const string MENU_SCENE = "Menu";
@@ -74,7 +74,7 @@ public class GamePlayController : MonoBehaviour {
 					rock.isSelected = true;
 					cardSelection.transform.position = rock.transform.position;
 					
-					selected = rock;
+					selected = CardType.ROCK;
 				break;
 				case CardType.SCISSOR:
 					rock.isSelected = false;
@@ -82,7 +82,7 @@ public class GamePlayController : MonoBehaviour {
 					scissor.isSelected = true;
 					cardSelection.transform.position = scissor.transform.position;
 
-					selected = scissor;
+					selected = CardType.SCISSOR;
 				break;
 				case CardType.PAPER:
 					scissor.isSelected = false;
@@ -90,7 +90,7 @@ public class GamePlayController : MonoBehaviour {
 					paper.isSelected = true;
 					cardSelection.transform.position = paper.transform.position;
 
-					selected = paper;
+					selected = CardType.PAPER;
 				break;
 			}
 
@@ -105,7 +105,7 @@ public class GamePlayController : MonoBehaviour {
 
 		cardSelection.GetComponent<SpriteRenderer>().enabled = false;
 
-		switch (selected.type) {
+		switch (selected) {
 			case CardType.ROCK:
 				scissor.FadeOut();
 				paper.FadeOut();
@@ -144,11 +144,22 @@ public class GamePlayController : MonoBehaviour {
 	}
 
 	void ValidateVictoryCard(){
-		CardType playerCard = selected.type;
+		CardType playerCard = selected;
 		CardType computerCard = computer.type;
 
 		computer.FadeOut();
-		selected.GetComponent<SpriteRenderer>().enabled = false;
+
+		switch(selected) {
+		case CardType.PAPER:
+			paper.GetComponent<SpriteRenderer>().enabled = false;
+			break;
+		case CardType.ROCK:
+			rock.GetComponent<SpriteRenderer>().enabled = false;
+			break;
+		case CardType.SCISSOR:
+			scissor.GetComponent<SpriteRenderer>().enabled = false;
+			break;
+		}
 
 		if(playerCard.Equals(computerCard)){
 			texts.DefineResult(GameResult.DRAW);
@@ -190,11 +201,16 @@ public class GamePlayController : MonoBehaviour {
 
 		texts.AdvanceRoundCounter();
 
-		selected = null;
+		StartCoroutine("WaitAndShow");
+	}
 
-		computer.ResetAnimations(plainSprite);
-		rock.ResetAnimations(rockSprite);
-		scissor.ResetAnimations(scissorSprite);
-		paper.ResetAnimations(paperSprite);
+	IEnumerator WaitAndShow(){
+		computer.ResetAnimations(CardType.PLAIN, plainSprite);
+
+		yield return new WaitForSeconds(1);
+
+		rock.ResetAnimations(selected, rockSprite);
+		scissor.ResetAnimations(selected, scissorSprite);
+		paper.ResetAnimations(selected, paperSprite);
 	}
 }

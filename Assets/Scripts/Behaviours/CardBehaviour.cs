@@ -20,10 +20,6 @@ public class CardBehaviour : MonoBehaviour {
 		gameObject.GetComponent<Animator>().SetBool("FadeOut", true);
 	}
 
-	public void FadeIn(){
-		gameObject.GetComponent<Animator>().SetBool("FadeIn", true);
-	}
-
 	public void ScissorMoveLeft(){
 		gameObject.GetComponent<Animator>().SetBool("ScissorMoveLeft", true);
 	}
@@ -36,8 +32,14 @@ public class CardBehaviour : MonoBehaviour {
 		gameObject.GetComponent<Animator>().SetBool("ComputerPlayCard", true);
 	}
 
-	public void ResetAnimations(Sprite sprite){
+	public void ResetAnimations(CardType selected, Sprite sprite = null){
 		isSelected = false;
+
+		if(selected != CardType.PLAIN && this.type == selected){
+			gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		}
+
+		gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
 
 		gameObject.GetComponent<Animator>().SetBool("ComputerPlayCard", false);
 		gameObject.GetComponent<Animator>().SetBool("ScissorMoveLeft", false);
@@ -45,21 +47,10 @@ public class CardBehaviour : MonoBehaviour {
 		gameObject.GetComponent<Animator>().SetBool("FadeOut", false);
 
 		gameObject.gameObject.GetComponent<Animator>().Play("Idle");
-
-		gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-
-		gameObject.GetComponent<SpriteRenderer>().enabled = true;
-
-		FadeIn();
-	}
-
-	public void SetToIdle(){
-		gameObject.GetComponent<Animator>().SetBool("FadeIn", false);
-		gameObject.gameObject.GetComponent<Animator>().Play("Idle");
 	}
 
 	public void ChangeComputerSpriteByType(){
-		Random.seed = Random.Range(0, Time.frameCount);
+		//Random.seed = Random.Range(0, Time.frameCount);
 		int pcCardNumber = Random.Range(0, 3);
 
 		switch (pcCardNumber) {

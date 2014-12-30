@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 public class SpriteButton : MonoBehaviour {
 	public SpriteButtonAnchor anchor = SpriteButtonAnchor.NONE;
-	public int marginLeft = 0;
-	public int marginRight = 0;
-	public int marginTop = 0;
-	public int marginBottom = 0;
+	public int screenID = 0;
+	public float marginLeft = 0;
+	public float marginRight = 0;
+	public float marginTop = 0;
+	public float marginBottom = 0;
 
 	void Awake(){
 		Settings();

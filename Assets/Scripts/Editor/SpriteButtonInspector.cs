@@ -11,13 +11,17 @@ public class SpriteButtonInspector : Editor {
 
 			SpriteButton button = (SpriteButton)target;
 
+			if(!button.anchor.Equals(SpriteButtonAnchor.NONE)){
+				button.screenID = EditorGUILayout.IntField("Screen ID", button.screenID);
+			}
+
 			button.anchor = (SpriteButtonAnchor) EditorGUILayout.EnumPopup("Anchor", button.anchor);
 
 			if(!button.anchor.Equals(SpriteButtonAnchor.NONE)){
-				button.marginTop = EditorGUILayout.IntField("Margin Top", button.marginTop);
-				button.marginBottom = EditorGUILayout.IntField("Margin Bottom", button.marginBottom);
-				button.marginLeft = EditorGUILayout.IntField("Margin Left", button.marginLeft);
-				button.marginRight = EditorGUILayout.IntField("Margin Right", button.marginRight);
+				button.marginTop = EditorGUILayout.FloatField("Margin Top", button.marginTop);
+				button.marginBottom = EditorGUILayout.FloatField("Margin Bottom", button.marginBottom);
+				button.marginLeft = EditorGUILayout.FloatField("Margin Left", button.marginLeft);
+				button.marginRight = EditorGUILayout.FloatField("Margin Right", button.marginRight);
 			}
 
 			if(GUI.changed){

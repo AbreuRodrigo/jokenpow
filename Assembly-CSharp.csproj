@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Behaviours\CardBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\CutScene.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\GUIBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\GameMessage.cs" />
      <Compile Include="Assets\Scripts\Behaviours\ScoreTextCorrection.cs" />
      <Compile Include="Assets\Scripts\Behaviours\SpriteButton.cs" />

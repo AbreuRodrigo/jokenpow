@@ -8,6 +8,8 @@ public class SpriteButtonUtils {
 	public static Vector3 CalculateAnchors(SpriteButton button) {
 		Vector3 newVector = button.transform.position;
 
+		int id = button.screenID;
+
 		float w = Screen.width;
 		float h = Screen.height;
 
@@ -19,14 +21,16 @@ public class SpriteButtonUtils {
 		
 		Vector3 s = button.gameObject.collider2D.bounds.size * 0.5f;
 		
-		Vector3 pw = Camera.main.ScreenToWorldPoint(new Vector3(w, 0, 10));
+		Vector3 pw = Camera.main.ScreenToWorldPoint(new Vector3(w - (w * id), 0, 10));
 		Vector3 ph = Camera.main.ScreenToWorldPoint(new Vector3(0, h, 10));
-		
-		float u = ((pw.x * 2 / w) + (ph.y * 2 / h)) * 0.5f;//PIXEL -> UNIT
-		float ml = button.marginLeft * u;
-		float mr = button.marginRight * u;
-		float mt = button.marginTop * u;
-		float mb = button.marginBottom * u;
+
+		float wLimit = pw.x;
+		float hLimit = ph.y;
+
+		float ml = button.marginLeft / wLimit;
+		float mr = button.marginRight / wLimit;
+		float mt = button.marginTop / hLimit;
+		float mb = button.marginBottom / hLimit;
 		float mh = mr - ml;
 		float mv = mt - mb;
 		
