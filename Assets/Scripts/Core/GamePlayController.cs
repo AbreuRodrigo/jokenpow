@@ -8,12 +8,10 @@ public class GamePlayController : MonoBehaviour {
 	public Sprite scissorSprite;
 	public Sprite paperSprite;
 
-	private SpriteButton button;
 	private GameObject cardSelection;
 	private CutScene cutScene;
 
 	private TextsController texts;
-	private BtnsController btns;
 
 	private GameState state;
 
@@ -21,6 +19,8 @@ public class GamePlayController : MonoBehaviour {
 	private CardBehaviour scissor;
 	private CardBehaviour paper;
 	private CardBehaviour computer;
+
+	private Animator cardsContainer;
 
 	private GameMessage message;
 
@@ -32,15 +32,12 @@ public class GamePlayController : MonoBehaviour {
 	void Awake(){
 		cutScene = GameObject.FindObjectOfType<CutScene>();
 		texts = GameObject.FindObjectOfType<TextsController>();
-		btns = GameObject.FindObjectOfType<BtnsController>();
 
 		state = GameState.LOADING_GAMEPLAY;
 	}
 
 	void Start(){
 		cutScene.FadeIn(AfterCutSceneEvents);
-		
-		button = GameObject.Find("OkButton").GetComponent<SpriteButton>();	
 
 		cardSelection = GameObject.Find("CardSelection");
 		
@@ -51,8 +48,8 @@ public class GamePlayController : MonoBehaviour {
 		computer = GameObject.Find("ComputerCard").GetComponent<CardBehaviour>();
 		
 		message = GameObject.FindObjectOfType<GameMessage>();
-		
-		button.Disable();
+
+		cardsContainer = GameObject.Find("CardsContainer").GetComponent<Animator>();
 	}
 
 	void Update(){
@@ -93,8 +90,6 @@ public class GamePlayController : MonoBehaviour {
 					selected = CardType.PAPER;
 				break;
 			}
-
-			button.Enable();
 
 			cardSelection.GetComponent<SpriteRenderer>().enabled = true;
 		}
@@ -138,9 +133,9 @@ public class GamePlayController : MonoBehaviour {
 
 		yield return new WaitForSeconds(1f);
 
-		texts.CalculatePoints();
+		StartNextGameRound();
 
-		btns.ShowButtons();
+		texts.CalculatePoints();
 	}
 
 	void ValidateVictoryCard(){
@@ -150,34 +145,28 @@ public class GamePlayController : MonoBehaviour {
 		computer.FadeOut();
 
 		switch(selected) {
-		case CardType.PAPER:
-			paper.GetComponent<SpriteRenderer>().enabled = false;
+			case CardType.PAPER:
+				paper.GetComponent<SpriteRenderer>().enabled = false;
 			break;
-		case CardType.ROCK:
-			rock.GetComponent<SpriteRenderer>().enabled = false;
+			case CardType.ROCK:
+				rock.GetComponent<SpriteRenderer>().enabled = false;
 			break;
-		case CardType.SCISSOR:
-			scissor.GetComponent<SpriteRenderer>().enabled = false;
+			case CardType.SCISSOR:
+				scissor.GetComponent<SpriteRenderer>().enabled = false;
 			break;
 		}
 
 		if(playerCard.Equals(computerCard)){
 			texts.DefineResult(GameResult.DRAW);
-
-			message.RunDrawMessage();
 		}else if((playerCard.Equals(CardType.ROCK) && computerCard.Equals(CardType.SCISSOR)) ||
 		   (playerCard.Equals(CardType.PAPER) && computerCard.Equals(CardType.ROCK)) ||
 		   (playerCard.Equals(CardType.SCISSOR) && computerCard.Equals(CardType.PAPER))){
 
 			texts.DefineResult(GameResult.PLAYER1_VICTORY);
 			texts.PlayerVictory();
-
-			message.RunWinMessage();
 		}else{
 			texts.DefineResult(GameResult.PLAYER2_VICTORY);
 			texts.ComputerVictory();
-
-			message.RunLoseMessage();
 		}
 	}
 
@@ -195,13 +184,13 @@ public class GamePlayController : MonoBehaviour {
 	void StartNextGameRound(){
 		ChangeToCardSelectionState();
 
-		message.HideMessage();
-
-		btns.HideButtons();
-
 		texts.AdvanceRoundCounter();
 
 		StartCoroutine("WaitAndShow");
+	}
+
+	public bool IsThisState(GameState testingState){
+		return state.Equals(testingState);
 	}
 
 	IEnumerator WaitAndShow(){

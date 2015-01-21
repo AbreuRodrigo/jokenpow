@@ -13,7 +13,15 @@ public class CardBehaviour : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		game.SendMessage("ChangeSelectedCard", this.type);
+		if(game.IsThisState(GameState.CARD_SELECTION)){
+			game.SendMessage("ChangeSelectedCard", this.type);
+		}
+	}
+
+	void OnMouseUp(){
+		if(game.IsThisState(GameState.CARD_SELECTION)){
+			game.SendMessage("PlayGame");
+		}
 	}
 
 	public void FadeOut(){

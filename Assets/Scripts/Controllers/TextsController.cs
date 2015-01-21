@@ -45,7 +45,7 @@ public class TextsController : MonoBehaviour {
 		pcPointsText.text = pcScore.ToString();
 		pcPointsShadow.text = pcScore.ToString();
 		
-		roundCText.text = roundCShadow.text = "1-3";
+		roundCText.text = roundCShadow.text = "1-" + GameConfig.Instance.RoundLimit();
 	}
 
 	public void Fall(TriggerEvents e = null){
@@ -77,7 +77,7 @@ public class TextsController : MonoBehaviour {
 	public void AdvanceRoundCounter(){
 		round++;
 		
-		roundCText.text = roundCShadow.text = round + "-3";
+		roundCText.text = roundCShadow.text = round + "-" + GameConfig.Instance.RoundLimit();
 	}
 
 	public void DefineResult(GameResult res){
@@ -90,20 +90,20 @@ public class TextsController : MonoBehaviour {
 
 		switch(result) {
 			case GameResult.PLAYER1_VICTORY:
-				if(round <= 2 && playerVictories == 1){
+				if(playerVictories == 1){
 					nextPlayerScore += 10;
-				}else if(round == 2 && playerVictories == 2){
+				}else if(playerVictories == 2){
 					nextPlayerScore += 20;
-				}else if(round == 3 && playerVictories <= 2){
+				}else if(playerVictories <= 2){
 					nextPlayerScore += 15;
 				}
 			break;
 			case GameResult.PLAYER2_VICTORY:
-				if(round <= 2 && computerVictories == 1){
+				if(computerVictories == 1){
 					nextComputerScore += 10;
-				}else if(round == 2 && computerVictories == 2){
+				}else if(computerVictories == 2){
 					nextComputerScore += 20;
-				}else if(round == 3 && computerVictories <= 2){
+				}else if(computerVictories <= 2){
 					nextComputerScore += 15;
 				}
 			break;

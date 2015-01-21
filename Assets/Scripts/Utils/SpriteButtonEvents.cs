@@ -22,8 +22,6 @@ public class SpriteButtonEvents {
 
 	public void OnRelease(SpriteButton button){
 		DoLogicsMenuBtns(button);
-
-		DoLogicsInGameBtns(button);
 	}
 
 	private void DoLogicsMenuBtns(SpriteButton button){
@@ -33,18 +31,18 @@ public class SpriteButtonEvents {
 		if("ReturnMainMenu".Equals(button.name)){
 			GameObject.FindObjectOfType<GUIBehaviour>().SlideOutRight();
 		}
-	}
 
-	private void DoLogicsInGameBtns(SpriteButton button){
-		if("OkButton".Equals(button.name)){
-			GameObject.FindObjectOfType<GamePlayController>().SendMessage("PlayGame");
-			button.Disable();
+		if ("3Rounds".Equals (button.name)) {
+			GameConfig.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_3);
+			LoadGamePlayScene();
 		}
-		if("MenuButton".Equals(button.name)){
-			Application.LoadLevel("Menu");
+		if ("5Rounds".Equals (button.name)) {
+			GameConfig.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_5);
+			LoadGamePlayScene();
 		}
-		if("ReturnButton".Equals(button.name)){
-			GameObject.FindObjectOfType<GamePlayController>().SendMessage("StartNextGameRound");
+		if ("7Rounds".Equals (button.name)) {
+			GameConfig.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_7);
+			LoadGamePlayScene();
 		}
 	}
 
