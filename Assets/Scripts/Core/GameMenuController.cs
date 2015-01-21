@@ -17,7 +17,7 @@ public class GameMenuController : MonoBehaviour {
 		Application.LoadLevel("GamePlaySingle");
 	}
 
-	void OnGUI(){
+	/*void OnGUI(){
 		if(GUI.Button(new Rect(10, 10, 100, 50), "Connect")){
 			PlayGamesPlatform.Activate();
 			PlayGamesPlatform.Instance.Authenticate((bool success) =>{
@@ -31,5 +31,5 @@ public class GameMenuController : MonoBehaviour {
 		if(GUI.Button(new Rect(10, 190, 100, 50), "Leaderboard")){
 			PlayGamesPlatform.Instance.ShowLeaderboardUI("CgkIh7jKwaEKEAIQBg");
 		}
-	}
+	}*/
 }

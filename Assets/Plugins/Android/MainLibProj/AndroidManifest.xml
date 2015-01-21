@@ -10,9 +10,9 @@
  
     <application>
         <meta-data android:name="com.google.android.gms.games.APP_ID"
-        		android:value="\ 352593288199" /> 
+        		android:value="\ 858393612516" /> 
         <meta-data android:name="com.google.android.gms.appstate.APP_ID"
-        		android:value="\ 352593288199" /> 
+        		android:value="\ 858393612516" /> 
         <meta-data android:name="com.google.android.gms.version" 
         		android:value="@integer/google_play_services_version" /> 
         <activity android:name="com.google.games.bridge.NativeBridgeActivity"
