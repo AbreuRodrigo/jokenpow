@@ -3,11 +3,13 @@ using System.Collections;
 
 public class TextsController : MonoBehaviour {
 
-	private int round;
+	private int currentRound;
 	private int myScore;
 	private int pcScore;
 	private int playerVictories;
 	private int computerVictories;
+	private int nextPlayerScore;
+	private int nextComputerScore;
 
 	public delegate void TriggerEvents();
 	public static event TriggerEvents events;
@@ -33,11 +35,13 @@ public class TextsController : MonoBehaviour {
 	}
 
 	void Start(){
-		round = 1;
+		currentRound = 1;
 		myScore = 0;
 		pcScore = 0;
 		playerVictories = 0;
 		computerVictories = 0;
+		nextPlayerScore = 0;
+		nextComputerScore = 0;
 		
 		myPointsText.text = myScore.ToString();
 		myPointsShadow.text = myScore.ToString();
@@ -75,9 +79,9 @@ public class TextsController : MonoBehaviour {
 	}
 	
 	public void AdvanceRoundCounter(){
-		round++;
+		currentRound++;
 		
-		roundCText.text = roundCShadow.text = round + "-" + GameConfig.Instance.RoundLimit();
+		roundCText.text = roundCShadow.text = currentRound + "-" + GameConfig.Instance.RoundLimit();
 	}
 
 	public void DefineResult(GameResult res){
@@ -85,27 +89,15 @@ public class TextsController : MonoBehaviour {
 	}
 
 	IEnumerator CalculatePointsRoutine(){
-		int nextPlayerScore = myScore;
-		int nextComputerScore = pcScore;
+		nextPlayerScore = myScore;
+		nextComputerScore = pcScore;
 
 		switch(result) {
-			case GameResult.PLAYER1_VICTORY:
-				if(playerVictories == 1){
-					nextPlayerScore += 10;
-				}else if(playerVictories == 2){
-					nextPlayerScore += 20;
-				}else if(playerVictories <= 2){
-					nextPlayerScore += 15;
-				}
+			case GameResult.PLAYER1_VICTORY:				
+				nextPlayerScore += ((playerVictories + 1) * 10);
 			break;
-			case GameResult.PLAYER2_VICTORY:
-				if(computerVictories == 1){
-					nextComputerScore += 10;
-				}else if(computerVictories == 2){
-					nextComputerScore += 20;
-				}else if(computerVictories <= 2){
-					nextComputerScore += 15;
-				}
+			case GameResult.PLAYER2_VICTORY:				
+				nextComputerScore += ((computerVictories + 1) * 10);
 			break;
 		}
 		
@@ -135,5 +127,23 @@ public class TextsController : MonoBehaviour {
 			myPointsText.text = myPointsShadow.text = myScore.ToString();
 			pcPointsText.text = pcPointsShadow.text = pcScore.ToString();
 		}	
+	}
+
+	public int CurrentRound {
+		get{
+			return currentRound;
+		}
+	}
+
+	public int NextPlayerScore {
+		get{
+			return nextPlayerScore;
+		}
+	}
+
+	public int NextComputerScore {
+		get{
+			return nextComputerScore;
+		}
 	}
 }

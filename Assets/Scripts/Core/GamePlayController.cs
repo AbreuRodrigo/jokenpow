@@ -53,10 +53,6 @@ public class GamePlayController : MonoBehaviour {
 	}
 
 	void Update(){
-		if(Input.GetKey(KeyCode.Escape)){
-			Application.LoadLevel(MENU_SCENE);
-		}
-
 		if(state == GameState.GAMEOVER){
 			DoGameOverInputLogics();
 		}
@@ -133,7 +129,9 @@ public class GamePlayController : MonoBehaviour {
 
 		yield return new WaitForSeconds(1f);
 
-		StartNextGameRound();
+		if(texts.CurrentRound < GameConfig.Instance.RoundLimit()){
+			StartNextGameRound();
+		}
 
 		texts.CalculatePoints();
 	}
@@ -185,6 +183,8 @@ public class GamePlayController : MonoBehaviour {
 		ChangeToCardSelectionState();
 
 		texts.AdvanceRoundCounter();
+
+		cardsContainer.Play("ShowUp");
 
 		StartCoroutine("WaitAndShow");
 	}
