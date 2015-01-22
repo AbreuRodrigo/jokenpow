@@ -1797,7 +1797,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 21200000, guid: b7ccbe05cc49fe743ad3c638d76df174, type: 2}
       propertyPath: m_Color.a
-      value: .937254906
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7ccbe05cc49fe743ad3c638d76df174, type: 2}
@@ -1884,7 +1884,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3a26ad5667512fd4c9947568904a7b37, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: .937254906}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1695174824
 Transform:
   m_ObjectHideFlags: 0

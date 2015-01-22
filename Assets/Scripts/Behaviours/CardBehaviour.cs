@@ -7,19 +7,25 @@ public class CardBehaviour : MonoBehaviour {
 
 	public bool isSelected = false;
 	private GamePlayController game;
+	private TextsController texts;
 
 	void Awake(){
 		game = GameObject.FindObjectOfType<GamePlayController>();
+		texts = GameObject.FindObjectOfType<TextsController>();
 	}
 
 	void OnMouseDown(){
-		if(game.IsThisState(GameState.CARD_SELECTION)){
+		if(game.IsThisState(GameState.CARD_SELECTION) && 
+		   gameObject.transform.position.y == 0 && 
+		   texts.gameObject.transform.position.y == 0){
 			game.SendMessage("ChangeSelectedCard", this.type);
 		}
 	}
 
 	void OnMouseUp(){
-		if(game.IsThisState(GameState.CARD_SELECTION)){
+		if(game.IsThisState(GameState.CARD_SELECTION) && 
+		   gameObject.transform.position.y == 0 && 
+		   texts.gameObject.transform.position.y == 0){
 			game.SendMessage("PlayGame");
 		}
 	}

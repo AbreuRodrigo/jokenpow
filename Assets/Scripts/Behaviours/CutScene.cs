@@ -13,15 +13,15 @@ public class CutScene : MonoBehaviour {
 
 		switch(state){
 			case CutSceneState.STARTS_FADING_IN:
-				FadeIn();
+				FadeIn(null);
 			break;
 			case CutSceneState.STARTS_FADING_OUT:
-				FadeOut();
+				FadeOut(null);
 			break;
 		}
 	}
 
-	public void FadeOut(TriggerEvents e = null){
+	public void FadeOut(TriggerEvents e){
 		state = CutSceneState.STARTS_FADING_OUT;
 
 		gameObject.GetComponent<Animator> ().enabled = true;
@@ -32,7 +32,7 @@ public class CutScene : MonoBehaviour {
 		}
 	}
 
-	public void FadeIn(TriggerEvents e = null){
+	public void FadeIn(TriggerEvents e){
 		state = CutSceneState.STARTS_FADING_IN;
 
 		gameObject.GetComponent<Animator> ().enabled = true;

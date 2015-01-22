@@ -129,11 +129,23 @@ public class GamePlayController : MonoBehaviour {
 
 		yield return new WaitForSeconds(1f);
 
-		if(texts.CurrentRound < GameConfig.Instance.RoundLimit()){
-			StartNextGameRound();
-		}
-
 		texts.CalculatePoints();
+
+		if(!IsFinalRound()){
+			StartNextGameRound();
+		}else {
+			if(texts.NextPlayerScore > texts.NextComputerScore){
+				message.RunWinMessage();
+			}else if(texts.NextPlayerScore < texts.NextComputerScore){
+				message.RunLoseMessage();
+			}else{
+				message.RunDrawMessage();
+			}
+
+			yield return new WaitForSeconds(1.5f);
+
+			cutScene.FadeOut(LoadMenuScene);
+		}
 	}
 
 	void ValidateVictoryCard(){
@@ -191,6 +203,14 @@ public class GamePlayController : MonoBehaviour {
 
 	public bool IsThisState(GameState testingState){
 		return state.Equals(testingState);
+	}
+
+	public bool IsFinalRound(){
+		return texts.CurrentRound == GameConfig.Instance.RoundLimit();
+	}
+
+	private void LoadMenuScene(){
+		Application.LoadLevel("Menu");
 	}
 
 	IEnumerator WaitAndShow(){
