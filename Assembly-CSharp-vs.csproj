@@ -132,10 +132,12 @@
      <Compile Include="Assets\GooglePlayGames\Platforms\Native\UnsupportedAppStateClient.cs" />
      <Compile Include="Assets\GooglePlayGames\Platforms\PlayGamesClientFactory.cs" />
      <Compile Include="Assets\GooglePlayGames\PluginVersion.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\BackButtonMenu.cs" />
      <Compile Include="Assets\Scripts\Behaviours\CardBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\CutScene.cs" />
      <Compile Include="Assets\Scripts\Behaviours\GUIBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\GameMessage.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\PlayerStatsMenu.cs" />
      <Compile Include="Assets\Scripts\Behaviours\ScoreTextCorrection.cs" />
      <Compile Include="Assets\Scripts\Behaviours\SpriteButton.cs" />
      <Compile Include="Assets\Scripts\Controllers\BtnsController.cs" />

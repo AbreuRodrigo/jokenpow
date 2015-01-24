@@ -21,8 +21,10 @@ public class SpriteButtonUtils {
 		
 		Vector3 s = button.gameObject.collider2D.bounds.size * 0.5f;
 		
-		Vector3 pw = Camera.main.ScreenToWorldPoint(new Vector3(w - (w * id), 0, 10));
+		Vector3 pw = Camera.main.ScreenToWorldPoint(new Vector3(w, 0, 10));
 		Vector3 ph = Camera.main.ScreenToWorldPoint(new Vector3(0, h, 10));
+
+		float wMod = id * (pw.x * 2);
 
 		float wLimit = pw.x;
 		float hLimit = ph.y;
@@ -33,35 +35,39 @@ public class SpriteButtonUtils {
 		float mb = button.marginBottom / hLimit;
 		float mh = mr - ml;
 		float mv = mt - mb;
+
+		float modLeft = -pw.x + s.x - mh + wMod;
+		float modMiddle = 0 + wMod - mh;
+		float modRight = pw.x - s.x - mh + wMod;
 		
 		if(!button.anchor.Equals(SpriteButtonAnchor.NONE)){
 			switch(button.anchor){
 			case SpriteButtonAnchor.TOP_LEFT:
-				newVector = ph - new Vector3(-s.x + mh, s.y + mv, 0);
+				newVector = new Vector3(modLeft, ph.y - s.y + mv, 0);
 				break;
 			case SpriteButtonAnchor.TOP_CENTER:
-				newVector = ph - new Vector3(-pw.x + mh, s.y + mv, 0);
+				newVector = new Vector3(modMiddle, ph.y - s.y + mv, 0);
 				break;
 			case SpriteButtonAnchor.TOP_RIGHT:
-				newVector = ph - new Vector3(-pw.x * 2 + s.x + mh, s.y + mv, 0);
+				newVector = new Vector3(modRight, ph.y - s.y + mv, 0);
 				break;
 			case SpriteButtonAnchor.MIDDLE_LEFT:
-				newVector = new Vector3(-pw.x + s.x - mh, 0 - mv, 0);
+				newVector = new Vector3(modLeft, 0 - mv, 0);
 				break;
 			case SpriteButtonAnchor.MIDDLE_CENTER:
-				newVector = new Vector3(0 - mh, 0 - mv, 0);
+				newVector = new Vector3(modMiddle, 0 - mv, 0);
 				break;
 			case SpriteButtonAnchor.MIDDLE_RIGHT:
-				newVector = new Vector3(pw.x - s.x - mh, 0 - mv, 0);
+				newVector = new Vector3(modRight, 0 - mv, 0);
 				break;
 			case SpriteButtonAnchor.BOTTOM_LEFT:
-				newVector = new Vector3(-pw.x + s.x - mh, -ph.y + s.y - mv, 0);
+				newVector = new Vector3(modLeft, -ph.y + s.y - mv, 0);
 				break;
 			case SpriteButtonAnchor.BOTTOM_CENTER:
-				newVector = new Vector3(0 - mh, -ph.y + s.y - mv, 0);
+				newVector = new Vector3(modMiddle, -ph.y + s.y - mv, 0);
 				break;
 			case SpriteButtonAnchor.BOTTOM_RIGHT:
-				newVector = new Vector3(pw.x - s.x - mh, -ph.y + s.y - mv, 0);
+				newVector = new Vector3(modLeft, -ph.y + s.y - mv, 0);
 				break;
 			}
 		}
