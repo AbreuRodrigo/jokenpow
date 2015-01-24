@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class TextsController : MonoBehaviour {
@@ -49,7 +49,7 @@ public class TextsController : MonoBehaviour {
 		pcPointsText.text = pcScore.ToString();
 		pcPointsShadow.text = pcScore.ToString();
 		
-		roundCText.text = roundCShadow.text = "1-" + GameConfig.Instance.RoundLimit();
+		roundCText.text = roundCShadow.text = "1-" + GameUtils.Instance.RoundLimit();
 	}
 
 	public void Fall(TriggerEvents e = null){
@@ -81,7 +81,7 @@ public class TextsController : MonoBehaviour {
 	public void AdvanceRoundCounter(){
 		currentRound++;
 		
-		roundCText.text = roundCShadow.text = currentRound + "-" + GameConfig.Instance.RoundLimit();
+		roundCText.text = roundCShadow.text = currentRound + "-" + GameUtils.Instance.RoundLimit();
 	}
 
 	public void DefineResult(GameResult res){

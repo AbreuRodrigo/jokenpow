@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GamePlayController : MonoBehaviour {
@@ -135,8 +135,14 @@ public class GamePlayController : MonoBehaviour {
 			StartNextGameRound();
 		}else {
 			if(texts.NextPlayerScore > texts.NextComputerScore){
+
+				GameUtils.SavePlayerScore(texts.NextPlayerScore - texts.NextComputerScore);
+
 				message.RunWinMessage();
 			}else if(texts.NextPlayerScore < texts.NextComputerScore){
+
+				GameUtils.SavePlayerScore(-(texts.NextComputerScore - texts.NextPlayerScore));
+
 				message.RunLoseMessage();
 			}else{
 				message.RunDrawMessage();
@@ -206,7 +212,7 @@ public class GamePlayController : MonoBehaviour {
 	}
 
 	public bool IsFinalRound(){
-		return texts.CurrentRound == GameConfig.Instance.RoundLimit();
+		return texts.CurrentRound == GameUtils.Instance.RoundLimit();
 	}
 
 	private void LoadMenuScene(){

@@ -33,15 +33,15 @@ public class SpriteButtonEvents {
 		}
 
 		if ("3Rounds".Equals (button.name)) {
-			GameConfig.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_3);
+			GameUtils.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_3);
 			LoadGamePlayScene();
 		}
 		if ("5Rounds".Equals (button.name)) {
-			GameConfig.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_5);
+			GameUtils.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_5);
 			LoadGamePlayScene();
 		}
 		if ("7Rounds".Equals (button.name)) {
-			GameConfig.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_7);
+			GameUtils.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_7);
 			LoadGamePlayScene();
 		}
 	}

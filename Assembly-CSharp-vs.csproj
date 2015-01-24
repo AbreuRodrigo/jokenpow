@@ -151,7 +151,7 @@
      <Compile Include="Assets\Scripts\Enums\GameRounds.cs" />
      <Compile Include="Assets\Scripts\Enums\GameState.cs" />
      <Compile Include="Assets\Scripts\Enums\SpriteButtonAnchor.cs" />
-     <Compile Include="Assets\Scripts\Utils\GameConfig.cs" />
+     <Compile Include="Assets\Scripts\Utils\GameUtils.cs" />
      <Compile Include="Assets\Scripts\Utils\SpriteButtonEvents.cs" />
      <Compile Include="Assets\Scripts\Utils\SpriteButtonUtils.cs" />
      <None Include="Assets\Editor\projsettings.txt" />
