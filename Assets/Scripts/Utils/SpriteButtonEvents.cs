@@ -31,7 +31,10 @@ public class SpriteButtonEvents {
 		if("ReturnMainMenu".Equals(button.name)){
 			GameObject.FindObjectOfType<GUIBehaviour>().SlideOutRight();
 		}
-
+		if ("LeaderBoardBtn".Equals (button.name)){
+			Debug.Log("Leader");
+			ConnectionUtils.Instance.ShowLeaderBoard();
+		}
 		if ("3Rounds".Equals (button.name)) {
 			GameUtils.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_3);
 			LoadGamePlayScene();

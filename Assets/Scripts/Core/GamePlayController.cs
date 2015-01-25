@@ -39,6 +39,8 @@ public class GamePlayController : MonoBehaviour {
 		texts = GameObject.FindObjectOfType<TextsController>();
 
 		state = GameState.LOADING_GAMEPLAY;
+
+		ConnectionUtils.Instance.HideBanner();
 	}
 
 	void Start(){
@@ -158,6 +160,12 @@ public class GamePlayController : MonoBehaviour {
 				message.RunDrawMessage();
 			}
 
+			int chance = Random.Range(0, 100);
+
+			if(chance <= 25){
+				ConnectionUtils.Instance.ShowFullScreen();
+			}
+
 			yield return new WaitForSeconds(1.5f);
 
 			cutScene.FadeOut(LoadMenuScene);
@@ -212,9 +220,9 @@ public class GamePlayController : MonoBehaviour {
 
 		texts.AdvanceRoundCounter();
 
-		cardsContainer.Play("Hidden");
-
 		roundCounter.PlayShowAnimation();
+
+		cardsContainer.Play("Hidden");
 
 		StartCoroutine("WaitAndShow");
 	}

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GameCompanyController : MonoBehaviour {
@@ -7,6 +7,10 @@ public class GameCompanyController : MonoBehaviour {
 
 	void Awake(){
 		Screen.fullScreen = true;
+
+		ConnectionUtils.Instance.InitBanner();
+		ConnectionUtils.Instance.InitInterstitial();
+		ConnectionUtils.Instance.ConnectToGoogleServices();
 	}
 
 	void Start () {

@@ -67,7 +67,7 @@ public class SpriteButtonUtils {
 				newVector = new Vector3(modMiddle, -ph.y + s.y - mv, 0);
 				break;
 			case SpriteButtonAnchor.BOTTOM_RIGHT:
-				newVector = new Vector3(modLeft, -ph.y + s.y - mv, 0);
+				newVector = new Vector3(modRight, -ph.y + s.y - mv, 0);
 				break;
 			}
 		}
