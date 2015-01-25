@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class GameMessage : MonoBehaviour {
-
 	public Sprite draw;
 	public Sprite win;
 	public Sprite lose;

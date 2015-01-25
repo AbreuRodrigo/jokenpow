@@ -138,6 +138,7 @@
      <Compile Include="Assets\Scripts\Behaviours\GUIBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\GameMessage.cs" />
      <Compile Include="Assets\Scripts\Behaviours\PlayerStatsMenu.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\RoundCounterBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\ScoreTextCorrection.cs" />
      <Compile Include="Assets\Scripts\Behaviours\SpriteButton.cs" />
      <Compile Include="Assets\Scripts\Controllers\BtnsController.cs" />

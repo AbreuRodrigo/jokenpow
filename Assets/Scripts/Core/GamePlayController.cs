@@ -8,6 +8,9 @@ public class GamePlayController : MonoBehaviour {
 	public Sprite scissorSprite;
 	public Sprite paperSprite;
 
+	public TextMesh finalScoreText;
+	public TextMesh finalScoreShadow;
+
 	private GameObject cardSelection;
 	private CutScene cutScene;
 
@@ -21,6 +24,8 @@ public class GamePlayController : MonoBehaviour {
 	private CardBehaviour computer;
 
 	private Animator cardsContainer;
+	private RoundCounterBehaviour roundCounter;
+
 
 	private GameMessage message;
 
@@ -50,6 +55,9 @@ public class GamePlayController : MonoBehaviour {
 		message = GameObject.FindObjectOfType<GameMessage>();
 
 		cardsContainer = GameObject.Find("CardsContainer").GetComponent<Animator>();
+
+		roundCounter = GameObject.Find("RoundCounter").GetComponent<RoundCounterBehaviour>();
+		roundCounter.AddShowEvents(ShowCards);
 	}
 
 	void Update(){
@@ -134,6 +142,8 @@ public class GamePlayController : MonoBehaviour {
 		if(!IsFinalRound()){
 			StartNextGameRound();
 		}else {
+			finalScoreText.text = finalScoreShadow.text = texts.NextPlayerScore + " - " + texts.NextComputerScore;
+
 			if(texts.NextPlayerScore > texts.NextComputerScore){
 
 				GameUtils.SavePlayerScore(texts.NextPlayerScore - texts.NextComputerScore);
@@ -202,7 +212,9 @@ public class GamePlayController : MonoBehaviour {
 
 		texts.AdvanceRoundCounter();
 
-		cardsContainer.Play("ShowUp");
+		cardsContainer.Play("Hidden");
+
+		roundCounter.PlayShowAnimation();
 
 		StartCoroutine("WaitAndShow");
 	}
@@ -227,5 +239,9 @@ public class GamePlayController : MonoBehaviour {
 		rock.ResetAnimations(selected, rockSprite);
 		scissor.ResetAnimations(selected, scissorSprite);
 		paper.ResetAnimations(selected, paperSprite);
+	}
+
+	private void ShowCards(){
+		cardsContainer.Play("ShowUp");
 	}
 }

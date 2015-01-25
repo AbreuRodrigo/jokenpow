@@ -129,6 +129,10 @@ public class TextsController : MonoBehaviour {
 		}	
 	}
 
+	public bool IsFinalRound(){
+		return currentRound == GameUtils.Instance.RoundLimit();
+	}
+
 	public int CurrentRound {
 		get{
 			return currentRound;
