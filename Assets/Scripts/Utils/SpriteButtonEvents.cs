@@ -17,7 +17,6 @@ public class SpriteButtonEvents {
 	}	
 
 	public void OnPress(SpriteButton button){
-
 	}
 
 	public void OnRelease(SpriteButton button){
@@ -32,8 +31,10 @@ public class SpriteButtonEvents {
 			GameObject.FindObjectOfType<GUIBehaviour>().SlideOutRight();
 		}
 		if ("LeaderBoardBtn".Equals (button.name)){
-			Debug.Log("Leader");
 			ConnectionUtils.Instance.ShowLeaderBoard();
+		}
+		if ("CreditsBtn".Equals (button.name)){
+			GameObject.FindObjectOfType<GameMenuController>().ShowCredits();
 		}
 		if ("3Rounds".Equals (button.name)) {
 			GameUtils.Instance.DefineRoundLimit(GameRounds.ROUND_LIMIT_3);
@@ -53,4 +54,5 @@ public class SpriteButtonEvents {
 		GameObject.Find("GUI").SetActive(false);
 		GameObject.FindObjectOfType<CutScene>().FadeOut(GameMenuController.LoadGamePlay);
 	}
+
 }
