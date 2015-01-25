@@ -68,6 +68,10 @@ public class GamePlayController : MonoBehaviour {
 		}
 	}
 
+	void OnApplicationQuit(){
+		CalculateScoreBeforeQuit();
+	}
+
 	void ChangeSelectedCard(CardType type){
 		if(state == GameState.CARD_SELECTION){
 			switch (type) {
@@ -160,15 +164,21 @@ public class GamePlayController : MonoBehaviour {
 				message.RunDrawMessage();
 			}
 
-			int chance = Random.Range(0, 100);
-
-			if(chance <= 25){
-				ConnectionUtils.Instance.ShowFullScreen();
-			}
+			ConnectionUtils.Instance.ShowFullScreen();
 
 			yield return new WaitForSeconds(1.5f);
 
 			cutScene.FadeOut(LoadMenuScene);
+		}
+	}
+
+	void CalculateScoreBeforeQuit(){
+		texts.CalculatePoints();
+
+		if(texts.NextPlayerScore > texts.NextComputerScore){
+			GameUtils.SavePlayerScore(texts.NextPlayerScore - texts.NextComputerScore);
+		}else if(texts.NextPlayerScore < texts.NextComputerScore){
+			GameUtils.SavePlayerScore(-(texts.NextComputerScore - texts.NextPlayerScore));
 		}
 	}
 

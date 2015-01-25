@@ -73,7 +73,11 @@ public class ConnectionUtils {
 
 	public void ShowFullScreen(){
 		if(IsAndroid()){
-			fullscreen.Show();
+			int chance = Random.Range(0, 100);
+			
+			if(chance <= 25){
+				fullscreen.Show();
+			}
 		}
 	}
 
