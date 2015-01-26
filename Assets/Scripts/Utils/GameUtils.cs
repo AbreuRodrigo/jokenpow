@@ -3,12 +3,17 @@ using System.Collections;
 
 public class GameUtils {
 	private const string PLAYER_SCORE = "PlayerScore";
+	private const string COULD_NOT_SAVE_SCORE = "CouldNotSaveLastScore";
 	private const int LEVEL_LIMIT = 750;
 
 	private static GameUtils instance;
 	private int roundLimit = 3;
 
-	private GameUtils(){}
+	private GameUtils(){
+		if(PlayerPrefs.GetInt(COULD_NOT_SAVE_SCORE) != null && PlayerPrefs.GetInt(COULD_NOT_SAVE_SCORE) == 1){
+			ConnectionUtils.Instance.ShareScoreToLeaderBoard(LoadPlayerScore());
+		}
+	}
 
 	public static GameUtils Instance {
 		get{
@@ -36,9 +41,11 @@ public class GameUtils {
 
 		int totalScore = PlayerPrefs.GetInt(PLAYER_SCORE) + score;
 
-		totalScore = totalScore < 0 ? 0 : totalScore; 
+		totalScore = totalScore < 0 ? 0 : totalScore;
 
 		PlayerPrefs.SetInt(PLAYER_SCORE, totalScore);
+
+		ConnectionUtils.Instance.ShareScoreToLeaderBoard(totalScore);
 	}
 
 	public int LoadPlayerScore(){
@@ -59,5 +66,13 @@ public class GameUtils {
 		if(PlayerPrefs.GetInt(PLAYER_SCORE) == null){
 			PlayerPrefs.SetInt(PLAYER_SCORE, 0);
 		}
+	}
+
+	public void CouldNotSaveScore(){
+		PlayerPrefs.SetInt(COULD_NOT_SAVE_SCORE, 1);
+	}
+
+	public void LastScoreWasSaved(){
+		PlayerPrefs.SetInt(COULD_NOT_SAVE_SCORE, 0);
 	}
 }

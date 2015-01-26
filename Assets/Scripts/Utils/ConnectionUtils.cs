@@ -90,6 +90,18 @@ public class ConnectionUtils {
 		}
 	}
 
+	public void ShareScoreToLeaderBoard(int score){
+		if(IsAndroid()){
+			PlayGamesPlatform.Instance.ReportScore(score, LEADERBOARD, (bool success) => {
+				if(!success){
+					GameUtils.Instance.CouldNotSaveScore();
+				}else{
+					GameUtils.Instance.LastScoreWasSaved();
+				}
+			});
+		}
+	}
+
 	public void ShowLeaderBoard(){
 		if(IsAndroid() && isAuth){
 			PlayGamesPlatform.Instance.ShowLeaderboardUI(LEADERBOARD);
