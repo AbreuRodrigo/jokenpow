@@ -92,13 +92,7 @@ public class ConnectionUtils {
 
 	public void ShareScoreToLeaderBoard(int score){
 		if(IsAndroid()){
-			PlayGamesPlatform.Instance.ReportScore(score, LEADERBOARD, (bool success) => {
-				if(!success){
-					GameUtils.Instance.CouldNotSaveScore();
-				}else{
-					GameUtils.Instance.LastScoreWasSaved();
-				}
-			});
+			PlayGamesPlatform.Instance.ReportScore(score, LEADERBOARD, (bool success) => {});
 		}
 	}
 
