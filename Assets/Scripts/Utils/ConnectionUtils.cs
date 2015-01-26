@@ -84,7 +84,8 @@ public class ConnectionUtils {
 	public void ConnectToGoogleServices(){
 		if(IsAndroid()){
 			PlayGamesPlatform.Activate();
-			PlayGamesPlatform.Instance.Authenticate((bool success) =>{
+
+			Social.localUser.Authenticate((bool success) => {
 				isAuth = success;
 			});
 		}
@@ -92,12 +93,12 @@ public class ConnectionUtils {
 
 	public void ShareScoreToLeaderBoard(int score){
 		if(IsAndroid()){
-			PlayGamesPlatform.Instance.ReportScore(score, LEADERBOARD, (bool success) => {});
+			Social.ReportScore(score, LEADERBOARD, (bool success) => {});
 		}
 	}
 
 	public void ShowLeaderBoard(){
-		if(IsAndroid() && isAuth){
+		if(IsAndroid() && IsAuth){
 			PlayGamesPlatform.Instance.ShowLeaderboardUI(LEADERBOARD);
 		}
 	}

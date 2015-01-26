@@ -67,11 +67,11 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  iPhoneBundleIdentifier: com.jellycubegames.jkp
+  iPhoneBundleIdentifier: com.jellycubegames.jokenpow
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: b062afa1c92885847b4f25b0566fd9e1
-  iPhoneBundleVersion: 1.0.1
+  iPhoneBundleVersion: 1.0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1

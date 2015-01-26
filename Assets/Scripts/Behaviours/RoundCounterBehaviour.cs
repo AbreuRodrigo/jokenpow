@@ -17,6 +17,10 @@ public class RoundCounterBehaviour : MonoBehaviour {
 		game = GameObject.FindObjectOfType<GamePlayController>();
 	}
 
+	void Start(){
+		AdjustRoundText();
+	}
+
 	public void PlayShowAnimation(){
 		AdjustRoundText();
 		animator.Play("Show");
@@ -27,7 +31,8 @@ public class RoundCounterBehaviour : MonoBehaviour {
 	}
 
 	private void AdjustRoundText(){
-		string newText = !texts.IsFinalRound() ? ("Round " + texts.CurrentRound) : ("Final Round");
+		int round = (texts.CurrentRound == null || texts.CurrentRound == 0) ? 1 : texts.CurrentRound; 
+		string newText = !texts.IsFinalRound() ? ("Round " + round) : ("Final Round");
 
 		text.text = textShadow.text = newText;
 	}
