@@ -1799,7 +1799,7 @@ AnimationClip:
     script: {fileID: 0}
   m_Events:
   - time: 1.5
-    functionName: AfterShowEvents
+    functionName: ShowCardsOnGamePlay
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

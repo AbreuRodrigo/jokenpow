@@ -58,7 +58,6 @@ public class GamePlayController : MonoBehaviour {
 		cardsContainer = GameObject.Find("CardsContainer").GetComponent<Animator>();
 		
 		roundCounter = GameObject.Find("RoundCounter").GetComponent<RoundCounterBehaviour>();
-		roundCounter.AddAfterShowEvents(ShowCards);
 	}
 
 	void Update(){
@@ -258,7 +257,7 @@ public class GamePlayController : MonoBehaviour {
 		paper.ResetAnimations(selected, paperSprite);
 	}
 
-	private void ShowCards(){
+	public void ShowCards(){
 		cardsContainer.Play("ShowUp");
 	}
 }
