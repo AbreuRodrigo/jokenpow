@@ -26,7 +26,6 @@ public class GamePlayController : MonoBehaviour {
 	private Animator cardsContainer;
 	private RoundCounterBehaviour roundCounter;
 
-
 	private GameMessage message;
 
 	private CardType selected;
@@ -45,7 +44,7 @@ public class GamePlayController : MonoBehaviour {
 
 	void Start(){
 		cutScene.FadeIn(AfterCutSceneEvents);
-
+		
 		cardSelection = GameObject.Find("CardSelection");
 		
 		rock = GameObject.Find("CardRock").GetComponent<CardBehaviour>();
@@ -55,11 +54,11 @@ public class GamePlayController : MonoBehaviour {
 		computer = GameObject.Find("ComputerCard").GetComponent<CardBehaviour>();
 		
 		message = GameObject.FindObjectOfType<GameMessage>();
-
+		
 		cardsContainer = GameObject.Find("CardsContainer").GetComponent<Animator>();
-
+		
 		roundCounter = GameObject.Find("RoundCounter").GetComponent<RoundCounterBehaviour>();
-		roundCounter.AddShowEvents(ShowCards);
+		roundCounter.AddAfterShowEvents(ShowCards);
 	}
 
 	void Update(){

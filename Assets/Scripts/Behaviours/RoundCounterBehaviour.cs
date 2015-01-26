@@ -8,7 +8,7 @@ public class RoundCounterBehaviour : MonoBehaviour {
 	private Animator animator;
 
 	public delegate void AfterEvents();
-	public event AfterEvents showEvents;
+	public event AfterEvents aftrerShowEvents;
 	public event AfterEvents hideEvents;
 
 	private TextsController texts;
@@ -18,14 +18,14 @@ public class RoundCounterBehaviour : MonoBehaviour {
 		texts = GameObject.FindObjectOfType<TextsController>();
 	}
 
-	public void AddShowEvents(AfterEvents events){
+	public void AddAfterShowEvents(AfterEvents events){
+		aftrerShowEvents += events;
 		AdjustRoundText();
-		showEvents += events;
 	}
 
 	public void AddHideEvents(AfterEvents events){
-		AdjustRoundText();
 		hideEvents += events;
+		AdjustRoundText();
 	}
 
 	public void PlayShowAnimation(){
@@ -38,8 +38,8 @@ public class RoundCounterBehaviour : MonoBehaviour {
 	}
 
 	public void AfterShowEvents(){
-		if(showEvents != null){
-			showEvents.Invoke();
+		if(aftrerShowEvents != null){
+			aftrerShowEvents.Invoke();
 		}
 	}
 

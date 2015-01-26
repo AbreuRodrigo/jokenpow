@@ -17,7 +17,7 @@ public class ConnectionUtils {
 
 	private const string ADMOB_BANNER = "ca-app-pub-8693762148432125/3593129894";
 	private const string ADMOB_FULL = "ca-app-pub-8693762148432125/5321725092";
-	private const string LEADERBOARD = "CgkIh7jKwaEKEAIQBg";
+	private const string LEADERBOARD = "CgkI5KH84f0YEAIQBg";
 
 	private ConnectionUtils(){}
 

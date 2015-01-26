@@ -24,6 +24,14 @@ public class TextsController : MonoBehaviour {
 	private GameResult result;
 
 	void Awake(){
+		currentRound = 1;
+		myScore = 0;
+		pcScore = 0;
+		playerVictories = 0;
+		computerVictories = 0;
+		nextPlayerScore = 0;
+		nextComputerScore = 0;
+
 		events = null;
 
 		myPointsText = GameObject.Find("MyPointsText").GetComponent<TextMesh>();
@@ -34,15 +42,7 @@ public class TextsController : MonoBehaviour {
 		roundCShadow = GameObject.Find("RoundCShadow").GetComponent<TextMesh>();
 	}
 
-	void Start(){
-		currentRound = 1;
-		myScore = 0;
-		pcScore = 0;
-		playerVictories = 0;
-		computerVictories = 0;
-		nextPlayerScore = 0;
-		nextComputerScore = 0;
-		
+	void Start(){		
 		myPointsText.text = myScore.ToString();
 		myPointsShadow.text = myScore.ToString();
 		
