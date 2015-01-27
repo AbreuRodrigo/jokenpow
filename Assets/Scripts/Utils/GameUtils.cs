@@ -30,11 +30,7 @@ public class GameUtils {
 	}
 
 	public static void SavePlayerScore(int score){
-		if(PlayerPrefs.GetInt(PLAYER_SCORE) == null){
-			PlayerPrefs.SetInt(PLAYER_SCORE, 0);
-		}
-
-		int totalScore = PlayerPrefs.GetInt(PLAYER_SCORE) + score;
+		int totalScore = PlayerPrefs.GetInt(PLAYER_SCORE, 0) + score;
 
 		totalScore = totalScore < 0 ? 0 : totalScore;
 

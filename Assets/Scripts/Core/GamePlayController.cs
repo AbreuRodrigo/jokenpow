@@ -24,7 +24,6 @@ public class GamePlayController : MonoBehaviour {
 	private CardBehaviour computer;
 
 	private Animator cardsContainer;
-	//private RoundCounterBehaviour roundCounter;
 
 	private GameMessage message;
 
@@ -56,8 +55,6 @@ public class GamePlayController : MonoBehaviour {
 		message = GameObject.FindObjectOfType<GameMessage>();
 		
 		cardsContainer = GameObject.Find("CardsContainer").GetComponent<Animator>();
-		
-		//roundCounter = GameObject.Find("RoundCounter").GetComponent<RoundCounterBehaviour>();
 	}
 
 	void Update(){
@@ -228,11 +225,7 @@ public class GamePlayController : MonoBehaviour {
 
 		texts.AdvanceRoundCounter();
 
-		//TODO - Fix the roundCounter, stucking the game flow
-		//roundCounter.PlayShowAnimation();
-		ShowCards();
-
-		cardsContainer.Play("Hidden");
+		cardsContainer.Play("ShowUp");
 
 		StartCoroutine("WaitAndShow");
 	}
@@ -257,9 +250,5 @@ public class GamePlayController : MonoBehaviour {
 		rock.ResetAnimations(selected, rockSprite);
 		scissor.ResetAnimations(selected, scissorSprite);
 		paper.ResetAnimations(selected, paperSprite);
-	}
-
-	public void ShowCards(){
-		cardsContainer.Play("ShowUp");
 	}
 }

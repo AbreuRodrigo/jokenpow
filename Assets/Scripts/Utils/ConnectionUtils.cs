@@ -13,8 +13,8 @@ public class ConnectionUtils {
 	private InterstitialAd fullscreen;
 	private AdRequest fullRequest;
 
-	private const string ADMOB_BANNER = "ca-app-pub-8693762148432125/3593129894";
-	private const string ADMOB_FULL = "ca-app-pub-8693762148432125/5321725092";
+	private const string ADMOB_BANNER = "ca-app-pub-8693762148432125/1454771899";
+	private const string ADMOB_FULL = "ca-app-pub-8693762148432125/2931505094";
 	private const string LEADERBOARD = "CgkI5KH84f0YEAIQBg";
 
 	private ConnectionUtils(){}
