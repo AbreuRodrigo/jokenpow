@@ -10,6 +10,8 @@ public class GameMenuController : MonoBehaviour {
 
 	private bool isShowingCredits = false;
 
+	private bool waitingAuthentication = false;
+
 	void Awake(){
 		ConnectionUtils.Instance.ShowBanner();
 
@@ -18,8 +20,7 @@ public class GameMenuController : MonoBehaviour {
 		guiMainMenu = GameObject.Find("GUIMainMenu").GetComponent<Animator>();
 		guiCredits = GameObject.Find("GUICredits").GetComponent<Animator>();
 
-		if(!Application.platform.Equals(RuntimePlatform.Android) ||
-		   !ConnectionUtils.Instance.IsAuth){
+		if(!IsAndroid() || Social.Active.localUser == null){
 			leaderBoardBtn.SetActive(false);
 		}
 	}

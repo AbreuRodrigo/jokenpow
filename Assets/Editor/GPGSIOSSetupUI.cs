@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2014 Google Inc.
+ * Copyright (C) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,7 @@ using System.Collections;
 using System.IO;
 
 public class GPGSIOSSetupUI : EditorWindow {
-
-    private const string GameInfoPath = "Assets/GooglePlayGames/GameInfo.cs";
-
+    private string mAppId = "";
     private string mClientId = "";
     private string mBundleId = "";
 
@@ -31,12 +29,8 @@ public class GPGSIOSSetupUI : EditorWindow {
         EditorWindow.GetWindow(typeof(GPGSIOSSetupUI));
     }
 
-    [MenuItem("File/Play Games - iOS setup...")]
-    public static void MenuItemFileGPGSIOSSetup() {
-        EditorWindow.GetWindow(typeof(GPGSIOSSetupUI));
-    }
-
     void OnEnable() {
+        mAppId = GPGSProjectSettings.Instance.Get("proj.AppId");
         mClientId = GPGSProjectSettings.Instance.Get("ios.ClientId");
         mBundleId = GPGSProjectSettings.Instance.Get("ios.BundleId");
 
@@ -46,6 +40,7 @@ public class GPGSIOSSetupUI : EditorWindow {
     }
 
     void Save() {
+        GPGSProjectSettings.Instance.Set("proj.AppId", mAppId);
         GPGSProjectSettings.Instance.Set("ios.ClientId", mClientId);
         GPGSProjectSettings.Instance.Set("ios.BundleId", mBundleId);
         GPGSProjectSettings.Instance.Save();
@@ -56,6 +51,12 @@ public class GPGSIOSSetupUI : EditorWindow {
         GUILayout.BeginArea(new Rect(20, 20, position.width - 40, position.height - 40));
         GUILayout.Label(GPGSStrings.IOSSetup.Title, EditorStyles.boldLabel);
         GUILayout.Label(GPGSStrings.IOSSetup.Blurb);
+        GUILayout.Space(10);
+
+        // App ID field
+        GUILayout.Label(GPGSStrings.Setup.AppIdTitle, EditorStyles.boldLabel);
+        GUILayout.Label(GPGSStrings.Setup.AppIdBlurb);
+        mAppId = EditorGUILayout.TextField(GPGSStrings.Setup.AppId, mAppId);
         GUILayout.Space(10);
 
         // Client ID field
@@ -77,15 +78,12 @@ public class GPGSIOSSetupUI : EditorWindow {
         GUILayout.EndArea();
     }
 
-    private void FillInAppData(string sourcePath, string outputPath) {
-        string fileBody = GPGSUtil.ReadFully(sourcePath);
-        fileBody = fileBody.Replace("__CLIENTID__", mClientId);
-        fileBody = fileBody.Replace("__BUNDLEID__", mBundleId);
-        GPGSUtil.WriteFile(outputPath, fileBody);
-    }
-
     void DoSetup() {
-
+        Save();
+        if (!GPGSUtil.LooksLikeValidAppId(mAppId)) {
+            GPGSUtil.Alert(GPGSStrings.Setup.AppIdError);
+            return;
+        }
         if (!GPGSUtil.LooksLikeValidClientId(mClientId)) {
             GPGSUtil.Alert(GPGSStrings.IOSSetup.ClientIdError);
             return;
@@ -95,10 +93,12 @@ public class GPGSIOSSetupUI : EditorWindow {
             return;
         }
 
-        Save();
-        GPGSUtil.UpdateGameInfo();
-
-        FillInAppData(GameInfoPath, GameInfoPath);
+        // Write GPGSParams.h with the app's parameters
+        string paramsFileBody = GPGSUtil.ReadTextFile("template-GPGSParams");
+        paramsFileBody = paramsFileBody.Replace("__APPID__", mAppId);
+        paramsFileBody = paramsFileBody.Replace("__CLIENTID__", mClientId);
+        paramsFileBody = paramsFileBody.Replace("__BUNDLEID__", mBundleId);
+        GPGSUtil.WriteFile("Assets/Plugins/iOS/GPGSParams.h", paramsFileBody);
 
         // Finished!
         GPGSProjectSettings.Instance.Set("ios.SetupDone", true);

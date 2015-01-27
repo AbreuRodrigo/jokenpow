@@ -13,8 +13,6 @@ public class ConnectionUtils {
 	private InterstitialAd fullscreen;
 	private AdRequest fullRequest;
 
-	private static bool isAuth = false;
-
 	private const string ADMOB_BANNER = "ca-app-pub-8693762148432125/3593129894";
 	private const string ADMOB_FULL = "ca-app-pub-8693762148432125/5321725092";
 	private const string LEADERBOARD = "CgkI5KH84f0YEAIQBg";
@@ -28,12 +26,6 @@ public class ConnectionUtils {
 			}
 
 			return instance;
-		}
-	}
-
-	public bool IsAuth{
-		get{
-			return isAuth;
 		}
 	}
 
@@ -85,9 +77,7 @@ public class ConnectionUtils {
 		if(IsAndroid()){
 			PlayGamesPlatform.Activate();
 
-			Social.localUser.Authenticate((bool success) => {
-				isAuth = success;
-			});
+			Social.localUser.Authenticate((bool success) => {});
 		}
 	}
 
@@ -98,7 +88,7 @@ public class ConnectionUtils {
 	}
 
 	public void ShowLeaderBoard(){
-		if(IsAndroid() && IsAuth){
+		if(IsAndroid() && Social.Active.localUser.authenticated){
 			PlayGamesPlatform.Instance.ShowLeaderboardUI(LEADERBOARD);
 		}
 	}
