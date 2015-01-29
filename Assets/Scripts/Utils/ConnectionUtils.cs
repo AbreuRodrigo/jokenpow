@@ -67,7 +67,7 @@ public class ConnectionUtils {
 		if(IsAndroid()){
 			int chance = Random.Range(0, 100);
 			
-			if(chance <= 25){
+			if(chance <= 50){
 				fullscreen.Show();
 			}
 		}

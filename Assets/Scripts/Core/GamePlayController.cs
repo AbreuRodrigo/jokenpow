@@ -11,6 +11,9 @@ public class GamePlayController : MonoBehaviour {
 	public TextMesh finalScoreText;
 	public TextMesh finalScoreShadow;
 
+	public TextMesh roundCounterText;
+	public TextMesh roundCounterShadow;
+
 	private GameObject cardSelection;
 	private CutScene cutScene;
 
@@ -24,6 +27,7 @@ public class GamePlayController : MonoBehaviour {
 	private CardBehaviour computer;
 
 	private Animator cardsContainer;
+	private Animator roundCounter;
 
 	private GameMessage message;
 
@@ -55,6 +59,9 @@ public class GamePlayController : MonoBehaviour {
 		message = GameObject.FindObjectOfType<GameMessage>();
 		
 		cardsContainer = GameObject.Find("CardsContainer").GetComponent<Animator>();
+		roundCounter = GameObject.Find("RoundCounter").GetComponent<Animator>();
+
+		AdjustRoundCounterText(0);
 	}
 
 	void Update(){
@@ -122,6 +129,8 @@ public class GamePlayController : MonoBehaviour {
 			break;
 		}
 
+		AdjustRoundCounterText(1);
+
 		computer.ComputerPlayCard();
 
 		StartCoroutine("WaitGameValidation");
@@ -136,11 +145,15 @@ public class GamePlayController : MonoBehaviour {
 
 		ValidateVictoryCard();
 
-		yield return new WaitForSeconds(1f);
+		//yield return new WaitForSeconds(1f);
 
 		texts.CalculatePoints();
 
-		if(!IsFinalRound()){
+		if(!IsFinalRound()){			 
+			roundCounter.Play("Show");
+
+			yield return new WaitForSeconds(0.25f);
+
 			StartNextGameRound();
 		}else {
 			finalScoreText.text = finalScoreShadow.text = texts.NextPlayerScore + " - " + texts.NextComputerScore;
@@ -240,6 +253,16 @@ public class GamePlayController : MonoBehaviour {
 
 	private void LoadMenuScene(){
 		Application.LoadLevel("Menu");
+	}
+
+	private void AdjustRoundCounterText(int round){
+		int currentRound = texts.CurrentRound + round;
+
+		if(GameUtils.Instance.RoundLimit() > currentRound) {
+			roundCounterText.text = roundCounterShadow.text = "Round " + currentRound;
+		}else{
+			roundCounterText.text = roundCounterShadow.text = "Final Round";
+		}
 	}
 
 	IEnumerator WaitAndShow(){
